@@ -1,14 +1,18 @@
 extends KinematicBody2D
 
 var lineal_vel = Vector2()
-var speed = 500
-var gravity = 20
+var speed = 400
+var gravity = 5
 
-var max_jumps = 2
+var max_jumps = 20
 var jumps = 0
 
 var max_airborne_time = 10
 var airborne_time = 0
+
+var facing_right = true
+
+onready var playback = $AnimationTree.get("parameters/playback")
 
 func _physics_process(delta: float) -> void:
 	
@@ -37,3 +41,26 @@ func _physics_process(delta: float) -> void:
 		lineal_vel.x = lerp(lineal_vel.x, target_vel * speed, 0.5)
 	else:
 		lineal_vel.x = lerp(lineal_vel.x, target_vel * speed, 0.1)
+	
+	if Input.is_action_just_pressed("move_left") and facing_right:
+		facing_right = false
+		scale.x = -1
+	if Input.is_action_just_pressed("move_right") and not facing_right:
+		facing_right = true
+		scale.x = -1
+	
+		
+	
+	# Animations
+	
+	if on_floor:
+		if abs(lineal_vel.x) > 10:
+			playback.travel("run")
+		else:
+			playback.travel("idle")
+	else:
+		if lineal_vel.y < 0:
+			playback.travel("jump")
+		else:
+			playback.travel("fall")
+	
