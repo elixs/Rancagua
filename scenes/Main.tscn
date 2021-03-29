@@ -9,10 +9,10 @@ extents = Vector2( 340.2, 46.187 )
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 305.152, 94.4994 )
+position = Vector2( 218.481, 303.68 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 421.125, 428.115 )
+position = Vector2( 431.125, 616.115 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -21,4 +21,4 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 715.918, 330.179 )
+position = Vector2( 725.918, 518.179 )

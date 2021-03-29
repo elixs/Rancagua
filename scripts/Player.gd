@@ -1,3 +1,5 @@
+class_name Player
+
 extends KinematicBody2D
 
 var lineal_vel = Vector2()
@@ -12,7 +14,24 @@ var airborne_time = 0
 
 var facing_right = true
 
+var can_take_damage = true
+
+# gamplay
+var uwu = 100 setget set_uwu
+func set_uwu(value):
+	uwu = value
+	$CanvasLayer/VBoxContainer/uwu/ProgressBar.value = uwu
+
+var awa = 100 setget set_awa
+func set_awa(value):
+	awa = value
+	$CanvasLayer/VBoxContainer/awa/ProgressBar.value = awa
+
 onready var playback = $AnimationTree.get("parameters/playback")
+
+
+func _ready() -> void:
+	$Invulnerability.connect("timeout", self, "on_invulnerability_ended")
 
 func _physics_process(delta: float) -> void:
 	
@@ -49,8 +68,6 @@ func _physics_process(delta: float) -> void:
 		facing_right = true
 		scale.x = -1
 	
-		
-	
 	# Animations
 	
 	if on_floor:
@@ -63,4 +80,16 @@ func _physics_process(delta: float) -> void:
 			playback.travel("jump")
 		else:
 			playback.travel("fall")
-	
+
+func take_damage(damage):
+	if not can_take_damage:
+		return
+	self.uwu = max(0, uwu - damage)
+	if uwu == 0:
+		get_tree().reload_current_scene()
+	can_take_damage = false
+	$Invulnerability.start()
+	$AnimationPlayer2.play("auchis")
+
+func on_invulnerability_ended():
+	can_take_damage = true

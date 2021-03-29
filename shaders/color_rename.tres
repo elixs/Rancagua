@@ -1,0 +1,53 @@
+[gd_resource type="VisualShader" load_steps=3 format=2]
+
+[sub_resource type="VisualShaderNodeColorUniform" id=1]
+uniform_name = "color"
+
+[sub_resource type="VisualShaderNodeTexture" id=2]
+source = 2
+texture_type = 1
+
+[resource]
+code = "shader_type canvas_item;
+uniform vec4 color : hint_color;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:2
+	vec3 n_out2p0 = color.rgb;
+	float n_out2p1 = color.a;
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -242, -169 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 1 )
+nodes/fragment/2/position = Vector2( 0, 100 )
+nodes/fragment/4/node = SubResource( 2 )
+nodes/fragment/4/position = Vector2( 0, 280 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 2, 0, 0, 0 )
