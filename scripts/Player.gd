@@ -4,7 +4,7 @@ extends KinematicBody2D
 
 var lineal_vel = Vector2()
 var speed = 400
-var gravity = 5
+var gravity = 20
 
 var max_jumps = 20
 var jumps = 0
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("jump") and jumps < max_jumps:
 		if on_floor or airborne_time < max_airborne_time:
-			lineal_vel.y = -speed
+			lineal_vel.y = -speed 
 			jumps += 1
 	
 	if Input.is_action_just_pressed("dash"):
@@ -80,6 +80,11 @@ func _physics_process(delta: float) -> void:
 			playback.travel("jump")
 		else:
 			playback.travel("fall")
+
+func _input(event: InputEvent) -> void:
+	var just_pressed = event.is_pressed() and not event.is_echo()
+	if event.is_action_pressed("menu") and just_pressed:
+		$PauseMenu.toggle()
 
 func take_damage(damage):
 	if not can_take_damage:
