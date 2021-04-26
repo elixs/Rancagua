@@ -10,40 +10,40 @@
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 16, 16, 64, 16, 64, 64, 16, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 0, 16, 64, 16, 64, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 0, 16, 48, 16, 48, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 16, 0, 64, 0, 64, 64, 16, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 0, 0, 48, 0, 48, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 16, 0, 64, 0, 64, 48, 16, 48 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 0, 0, 64, 0, 64, 48, 0, 48 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 0, 0, 48, 0, 48, 48, 0, 48 )
 
 [sub_resource type="ConvexPolygonShape2D" id=11]
-points = PoolVector2Array( 32, 0, 64, 0, 64, 64, 32, 64 )
+points = PoolVector2Array( 48, 16, 64, 16, 64, 48, 48, 48 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 0, 16, 64, 16, 64, 48, 0, 48 )
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 64, 0, 64 )
+points = PoolVector2Array( 0, 16, 16, 16, 16, 48, 0, 48 )
 
 [sub_resource type="TileSet" id=14]
 0/name = "Mossy - TileSet - small.png 0"
@@ -163,7 +163,7 @@ scale_random = 1.0
 position = Vector2( 218.481, 303.68 )
 
 [node name="Sprite" parent="Player" index="1"]
-frame = 15
+frame = 13
 
 [node name="AnimationTree" parent="Player" index="3"]
 parameters/playback = SubResource( 1 )
