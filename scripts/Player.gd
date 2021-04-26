@@ -98,3 +98,6 @@ func take_damage(damage):
 
 func on_invulnerability_ended():
 	can_take_damage = true
+
+func landed():
+	$Particles2D.emitting = true

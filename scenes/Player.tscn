@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://sprites/idle and  alter/idle sheet-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -119,6 +119,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 14, 15, 16, 17, 18 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "landed"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -437,9 +451,9 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
-[sub_resource type="AnimationNodeStateMachine" id=30]
+[sub_resource type="AnimationNodeStateMachine" id=31]
 states/fall/node = SubResource( 10 )
 states/fall/position = Vector2( 1009, 162 )
 states/fall_end/node = SubResource( 11 )
@@ -454,14 +468,13 @@ states/jump_start/node = SubResource( 15 )
 states/jump_start/position = Vector2( 650, 35 )
 states/run/node = SubResource( 16 )
 states/run/position = Vector2( 65, 315 )
-transitions = [ "idle", "run", SubResource( 17 ), "run", "idle", SubResource( 18 ), "idle", "jump_start", SubResource( 19 ), "run", "jump_start", SubResource( 20 ), "jump_start", "jump", SubResource( 21 ), "jump", "fall_start", SubResource( 22 ), "fall_start", "fall", SubResource( 23 ), "fall", "fall_end", SubResource( 24 ), "fall_end", "idle", SubResource( 25 ), "fall_end", "run", SubResource( 26 ), "fall", "jump", SubResource( 27 ), "fall_start", "jump", SubResource( 28 ), "fall_end", "jump", SubResource( 29 ), "fall_start", "fall_end", SubResource( 37 ) ]
+transitions = [ "idle", "run", SubResource( 17 ), "run", "idle", SubResource( 18 ), "idle", "jump_start", SubResource( 19 ), "run", "jump_start", SubResource( 20 ), "jump_start", "jump", SubResource( 21 ), "jump", "fall_start", SubResource( 22 ), "fall_start", "fall", SubResource( 23 ), "fall", "fall_end", SubResource( 24 ), "fall_end", "idle", SubResource( 25 ), "fall_end", "run", SubResource( 26 ), "fall", "jump", SubResource( 27 ), "fall_start", "jump", SubResource( 28 ), "fall_end", "jump", SubResource( 29 ), "fall_start", "fall_end", SubResource( 30 ) ]
 start_node = "idle"
 graph_offset = Vector2( 551, -28 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=31]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
-[sub_resource type="Animation" id=32]
-resource_name = "auchis"
+[sub_resource type="Animation" id=33]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/color")
 tracks/0/interp = 1
@@ -475,18 +488,34 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=33]
+[sub_resource type="DynamicFont" id=34]
 size = 32
 font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=34]
+[sub_resource type="StyleBoxFlat" id=35]
 bg_color = Color( 0.231373, 0.678431, 0.0666667, 1 )
 
-[sub_resource type="StyleBoxFlat" id=35]
+[sub_resource type="StyleBoxFlat" id=36]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=36]
+[sub_resource type="StyleBoxFlat" id=37]
 bg_color = Color( 0.0666667, 0.521569, 0.678431, 1 )
+
+[sub_resource type="ParticlesMaterial" id=38]
+emission_shape = 2
+emission_box_extents = Vector3( 15, 0, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 10.0
+gravity = Vector3( 0, 500, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+color = Color( 0.203922, 0.52549, 0.203922, 1 )
+hue_variation = 0.28
+hue_variation_random = 1.0
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -503,7 +532,7 @@ position = Vector2( 24, -10.75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 18
-frame = 4
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 3 )
@@ -515,13 +544,13 @@ anims/jump_start = SubResource( 8 )
 anims/run = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 30 )
+tree_root = SubResource( 31 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 31 )
+parameters/playback = SubResource( 32 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/auchis = SubResource( 32 )
+anims/auchis = SubResource( 33 )
 
 [node name="Invulnerability" type="Timer" parent="."]
 one_shot = true
@@ -545,7 +574,7 @@ margin_bottom = 28.0
 margin_right = 100.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 100, 0 )
-custom_fonts/font = SubResource( 33 )
+custom_fonts/font = SubResource( 34 )
 text = "uwu"
 align = 1
 
@@ -556,8 +585,8 @@ margin_bottom = 28.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_styles/fg = SubResource( 34 )
-custom_styles/bg = SubResource( 35 )
+custom_styles/fg = SubResource( 35 )
+custom_styles/bg = SubResource( 36 )
 value = 100.0
 percent_visible = false
 __meta__ = {
@@ -573,7 +602,7 @@ margin_bottom = 60.0
 margin_right = 100.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 100, 0 )
-custom_fonts/font = SubResource( 33 )
+custom_fonts/font = SubResource( 34 )
 text = "awa"
 align = 1
 
@@ -584,8 +613,8 @@ margin_bottom = 28.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_styles/fg = SubResource( 36 )
-custom_styles/bg = SubResource( 35 )
+custom_styles/fg = SubResource( 37 )
+custom_styles/bg = SubResource( 36 )
 value = 100.0
 percent_visible = false
 __meta__ = {
@@ -598,3 +627,14 @@ __meta__ = {
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0.315, 28 )
+emitting = false
+amount = 200
+lifetime = 0.4
+one_shot = true
+preprocess = 0.2
+speed_scale = 1.5
+local_coords = false
+process_material = SubResource( 38 )
