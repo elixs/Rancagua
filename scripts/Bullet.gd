@@ -14,3 +14,5 @@ func on_body_entered(body: Node):
 		var player: Player = body
 		player.take_damage(5)
 		queue_free()
+	if body is TileMap:
+		queue_free()

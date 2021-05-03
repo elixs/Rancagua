@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/glitch-alpine-svg/alpine_landscape/cone_top_rock_01b_al1.svg" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://sprites/Mossy Assets/Mossy Tileset/Mossy - TileSet - small.png" type="Texture" id=4]
 [ext_resource path="res://sprites/rain.png" type="Texture" id=5]
 [ext_resource path="res://scenes/DamageArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=7]
+[ext_resource path="res://scenes/Awa.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
@@ -158,18 +160,22 @@ scale = 2.0
 scale_random = 1.0
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 218.481, 303.68 )
 
 [node name="Sprite" parent="Player" index="1"]
-frame = 13
+frame = 8
 
 [node name="AnimationTree" parent="Player" index="3"]
 parameters/playback = SubResource( 1 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 802.907, 491.987 )
+position = Vector2( 1383.21, 759.91 )
+
+[node name="Awa" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( -996.405, -492.746 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 540.107, 77.0916 )
@@ -188,7 +194,7 @@ polygon = PoolVector2Array( -302.328, 68.4101, -283.974, 50.4304, -264.871, 39.1
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 14 )
 format = 1
-tile_data = PoolIntArray( 458757, 0, 196608, 458758, 0, 196609, 458759, 0, 196609, 458760, 0, 196610, 720893, 0, 196608, 720894, 0, 196609, 720895, 0, 196609, 655360, 0, 196609, 655361, 0, 196609, 655362, 0, 196609, 655363, 0, 196609, 655364, 0, 196609, 655365, 0, 196609, 655366, 0, 196609, 655367, 0, 196609, 655368, 0, 196609, 655369, 0, 196609, 655370, 0, 196609, 655371, 0, 196609, 655372, 0, 196609, 655373, 0, 196609, 655374, 0, 196609, 655375, 0, 196609, 655376, 0, 196609, 655377, 0, 196609, 655378, 0, 196609, 655379, 0, 196609, 655380, 0, 196609, 655381, 0, 196609, 655382, 0, 196609, 655383, 0, 196609, 655384, 0, 196609, 655385, 0, 196609, 655386, 0, 196609, 655387, 0, 196609, 655388, 0, 196609, 655389, 0, 196609, 655390, 0, 196610 )
+tile_data = PoolIntArray( 327687, 0, 196611, 458757, 0, 196608, 458758, 0, 196609, 458759, 0, 196609, 458760, 0, 196610, 720893, 0, 196608, 720894, 0, 196609, 720895, 0, 196609, 655360, 0, 196609, 655361, 0, 196609, 655362, 0, 196609, 655363, 0, 196609, 655364, 0, 196609, 655365, 0, 196609, 655366, 0, 196609, 655367, 0, 196609, 655368, 0, 196609, 655369, 0, 196609, 655370, 0, 196609, 655371, 0, 196609, 655372, 0, 196609, 655373, 0, 196609, 655374, 0, 196609, 655375, 0, 196609, 655376, 0, 196609, 655377, 0, 196609, 655378, 0, 196609, 655379, 0, 196609, 655380, 0, 196609, 655381, 0, 196609, 655382, 0, 196609, 655383, 0, 196609, 655384, 0, 196609, 655385, 0, 196609, 655386, 0, 196609, 655387, 0, 196609, 655388, 0, 196609, 655389, 0, 196609, 655390, 0, 196610 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 925.077, 430.935 )
@@ -207,6 +213,6 @@ position = Vector2( 502.564, 306.719 )
 texture = ExtResource( 5 )
 
 [node name="DamageArea" parent="." instance=ExtResource( 6 )]
-position = Vector2( 465.06, 592.449 )
+position = Vector2( 464.43, 600.009 )
 
 [editable path="Player"]

@@ -2,6 +2,8 @@ class_name Player
 
 extends KinematicBody2D
 
+var Awa = preload("res://scenes/Awa.tscn")
+
 var lineal_vel = Vector2()
 var speed = 400
 var gravity = 20
@@ -56,6 +58,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		lineal_vel = (get_global_mouse_position() - global_position).normalized() * 2 * speed
 	
+	
+	if Input.is_action_just_pressed("fire"):
+		fire()
+	
+	
 	if on_floor:
 		lineal_vel.x = lerp(lineal_vel.x, target_vel * speed, 0.5)
 	else:
@@ -101,3 +108,9 @@ func on_invulnerability_ended():
 
 func landed():
 	$Particles2D.emitting = true
+
+func fire():
+	var awa = Awa.instance()
+	awa.global_position = $Awa.global_position
+	get_parent().add_child(awa)
+	awa.fire_to(get_global_mouse_position())

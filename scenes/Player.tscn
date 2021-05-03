@@ -501,19 +501,19 @@ bg_color = Color( 0, 0, 0, 1 )
 [sub_resource type="StyleBoxFlat" id=37]
 bg_color = Color( 0.0666667, 0.521569, 0.678431, 1 )
 
-[sub_resource type="Gradient" id=41]
+[sub_resource type="Gradient" id=38]
 colors = PoolColorArray( 0.0431373, 0.611765, 0.239216, 1, 0.0431373, 0.611765, 0.239216, 0 )
 
-[sub_resource type="GradientTexture" id=42]
-gradient = SubResource( 41 )
+[sub_resource type="GradientTexture" id=39]
+gradient = SubResource( 38 )
 
-[sub_resource type="Curve" id=38]
+[sub_resource type="Curve" id=40]
 _data = [ Vector2( 0, 1 ), 0.0, -1.0, 0, 1, Vector2( 1, 0 ), -1.0, 0.0, 1, 0 ]
 
-[sub_resource type="CurveTexture" id=39]
-curve = SubResource( 38 )
+[sub_resource type="CurveTexture" id=41]
+curve = SubResource( 40 )
 
-[sub_resource type="ParticlesMaterial" id=40]
+[sub_resource type="ParticlesMaterial" id=42]
 emission_shape = 2
 emission_box_extents = Vector3( 15, 0, 1 )
 flag_disable_z = true
@@ -526,8 +526,8 @@ orbit_velocity_random = 0.0
 angle = 360.0
 angle_random = 1.0
 scale = 5.0
-scale_curve = SubResource( 39 )
-color_ramp = SubResource( 42 )
+scale_curve = SubResource( 41 )
+color_ramp = SubResource( 39 )
 hue_variation = 0.28
 hue_variation_random = 1.0
 
@@ -546,7 +546,7 @@ position = Vector2( 24, -10.75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 18
-frame = 15
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 3 )
@@ -651,4 +651,7 @@ one_shot = true
 preprocess = 0.1
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 40 )
+process_material = SubResource( 42 )
+
+[node name="Awa" type="Position2D" parent="."]
+position = Vector2( 10.2978, -19.1121 )
