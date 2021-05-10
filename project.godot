@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Rancagua"
-run/main_scene="res://scenes/Menu.tscn"
+run/main_scene="res://scenes/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+LevelManager="*res://scripts/LevelManager.gd"
 
 [display]
 

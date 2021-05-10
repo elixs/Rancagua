@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://sprites/idle and  alter/idle sheet-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://fonts/hf-free-complete/futile-pro-v1/FutilePro.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://shaders/color_add.shader" type="Shader" id=6]
 [ext_resource path="res://scenes/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sounds/RetroSFXMurkje/Blips/beep.wav" type="AudioStream" id=8]
+[ext_resource path="res://sounds/SnowWalk/SnowWalk.ogg" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.0
@@ -397,6 +399,23 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "step"
+}, {
+"args": [  ],
+"method": "step"
+} ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "fall"
@@ -470,7 +489,7 @@ states/run/node = SubResource( 16 )
 states/run/position = Vector2( 65, 315 )
 transitions = [ "idle", "run", SubResource( 17 ), "run", "idle", SubResource( 18 ), "idle", "jump_start", SubResource( 19 ), "run", "jump_start", SubResource( 20 ), "jump_start", "jump", SubResource( 21 ), "jump", "fall_start", SubResource( 22 ), "fall_start", "fall", SubResource( 23 ), "fall", "fall_end", SubResource( 24 ), "fall_end", "idle", SubResource( 25 ), "fall_end", "run", SubResource( 26 ), "fall", "jump", SubResource( 27 ), "fall_start", "jump", SubResource( 28 ), "fall_end", "jump", SubResource( 29 ), "fall_start", "fall_end", SubResource( 30 ) ]
 start_node = "idle"
-graph_offset = Vector2( 551, -28 )
+graph_offset = Vector2( -209, 137 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
@@ -546,7 +565,7 @@ position = Vector2( 24, -10.75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 18
-frame = 7
+frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 3 )
@@ -655,3 +674,11 @@ process_material = SubResource( 42 )
 
 [node name="Awa" type="Position2D" parent="."]
 position = Vector2( 10.2978, -19.1121 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -25.0
+
+[node name="Step" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -20.0

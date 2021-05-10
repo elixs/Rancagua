@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Laser_Shoot8.wav-32ca28bc9743204c1f6b4bad4a5a4dba.sample"
+
+[deps]
+
+source_file="res://sounds/RetroSFXMurkje/Laser/Laser_Shoot8.wav"
+dest_files=[ "res://.import/Laser_Shoot8.wav-32ca28bc9743204c1f6b4bad4a5a4dba.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

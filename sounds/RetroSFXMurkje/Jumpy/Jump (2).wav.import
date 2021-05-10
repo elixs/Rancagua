@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Jump (2).wav-90a069cef22dbda5055a48eff9ab952e.sample"
+
+[deps]
+
+source_file="res://sounds/RetroSFXMurkje/Jumpy/Jump (2).wav"
+dest_files=[ "res://.import/Jump (2).wav-90a069cef22dbda5055a48eff9ab952e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

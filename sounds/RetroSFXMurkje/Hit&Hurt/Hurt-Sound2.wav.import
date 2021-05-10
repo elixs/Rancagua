@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hurt-Sound2.wav-4d989d363ec62b9314570c72d351aa75.sample"
+
+[deps]
+
+source_file="res://sounds/RetroSFXMurkje/Hit&Hurt/Hurt-Sound2.wav"
+dest_files=[ "res://.import/Hurt-Sound2.wav-4d989d363ec62b9314570c72d351aa75.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

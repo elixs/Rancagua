@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bleep.wav-349c16eadab83598e980cf25aff9bbe2.sample"
+
+[deps]
+
+source_file="res://sounds/RetroSFXMurkje/Blips/bleep.wav"
+dest_files=[ "res://.import/bleep.wav-349c16eadab83598e980cf25aff9bbe2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

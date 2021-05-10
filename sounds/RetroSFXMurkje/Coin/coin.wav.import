@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/coin.wav-83780317256ae85e379bb0e7a024fcb4.sample"
+
+[deps]
+
+source_file="res://sounds/RetroSFXMurkje/Coin/coin.wav"
+dest_files=[ "res://.import/coin.wav-83780317256ae85e379bb0e7a024fcb4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Pickup_Coin18.wav-f7c9f21736fa9938f4cd84eab588a9f3.sample"
+
+[deps]
+
+source_file="res://sounds/RetroSFXMurkje/Coin/Pickup_Coin18.wav"
+dest_files=[ "res://.import/Pickup_Coin18.wav-f7c9f21736fa9938f4cd84eab588a9f3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

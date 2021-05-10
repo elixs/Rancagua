@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 		if on_floor or airborne_time < max_airborne_time:
 			lineal_vel.y = -speed 
 			jumps += 1
+			$Jump.play()
 	
 	if Input.is_action_just_pressed("dash"):
 		lineal_vel = (get_global_mouse_position() - global_position).normalized() * 2 * speed
@@ -114,3 +115,6 @@ func fire():
 	awa.global_position = $Awa.global_position
 	get_parent().add_child(awa)
 	awa.fire_to(get_global_mouse_position())
+
+func step():
+	$Step.play()
