@@ -13,3 +13,6 @@ func fade_in():
 	
 func fade_out():
 	$AnimationPlayer.play("fade_out")
+
+func set_progress(value):
+	$Label.text = str(ceil(value * 100))
