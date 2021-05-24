@@ -565,7 +565,7 @@ position = Vector2( 24, -10.75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 18
-frame = 12
+frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 3 )
@@ -682,3 +682,5 @@ volume_db = -25.0
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -20.0
+
+[node name="AwaTimer" type="Timer" parent="."]

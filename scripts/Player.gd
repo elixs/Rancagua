@@ -18,6 +18,12 @@ var facing_right = true
 
 var can_take_damage = true
 
+
+var AWA_USAGE = 10
+var MAX_AWA = 100
+
+var reloading_awa = false
+
 # gamplay
 var uwu = 100 setget set_uwu
 func set_uwu(value):
@@ -34,6 +40,7 @@ onready var playback = $AnimationTree.get("parameters/playback")
 
 func _ready() -> void:
 	$Invulnerability.connect("timeout", self, "on_invulnerability_ended")
+	$AwaTimer.connect("timeout", self, "reload_awa")
 
 func _physics_process(delta: float) -> void:
 	
@@ -41,6 +48,18 @@ func _physics_process(delta: float) -> void:
 	lineal_vel.y += gravity
 	
 	var on_floor = is_on_floor()
+	
+	
+	# check collision
+	
+	for i in get_slide_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.collider
+		
+		if Vector2.UP.dot(collision.normal) > 0.9:
+			if collider.has_method("stomp"):
+				lineal_vel.y = -speed
+				collider.stomp()
 	
 	var target_vel = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
@@ -111,10 +130,21 @@ func landed():
 	$Particles2D.emitting = true
 
 func fire():
-	var awa = Awa.instance()
-	awa.global_position = $Awa.global_position
-	get_parent().add_child(awa)
-	awa.fire_to(get_global_mouse_position())
+	if awa >= AWA_USAGE:
+		self.awa -= AWA_USAGE
+		var awa = Awa.instance()
+		awa.global_position = $Awa.global_position
+		get_parent().add_child(awa)
+		awa.fire_to(get_global_mouse_position())
+		reloading_awa = false
+		$AwaTimer.start()
 
 func step():
 	$Step.play()
+
+
+func reload_awa():
+	if not reloading_awa:
+		reloading_awa = true
+		return
+	self.awa = min(awa + AWA_USAGE, MAX_AWA)
