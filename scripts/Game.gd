@@ -2,6 +2,7 @@ extends Node2D
 
 var Levels = [
 	preload("res://scenes/Menu.tscn"),
+	preload("res://scenes/Plot.tscn"),
 	preload("res://scenes/Main.tscn"),
 	]
 

@@ -167,7 +167,7 @@ script = ExtResource( 7 )
 position = Vector2( 218.481, 303.68 )
 
 [node name="Sprite" parent="Player" index="1"]
-frame = 17
+frame = 5
 
 [node name="AnimationTree" parent="Player" index="3"]
 parameters/playback = SubResource( 1 )
@@ -226,5 +226,7 @@ texture = ExtResource( 5 )
 
 [node name="DamageArea" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1736.77, 596.233 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
 
 [editable path="Player"]
